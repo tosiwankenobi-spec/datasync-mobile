@@ -1,0 +1,126 @@
+{
+    "name": "DeviceReading",
+    "properties": {
+        "battery_pct": {
+            "type": [
+                "number",
+                "null"
+            ]
+        },
+        "charging": {
+            "type": [
+                "boolean",
+                "null"
+            ]
+        },
+        "connection_type": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "cpu_cores": {
+            "type": [
+                "number",
+                "null"
+            ]
+        },
+        "device_memory_gb": {
+            "type": [
+                "number",
+                "null"
+            ]
+        },
+        "downlink_mbps": {
+            "type": [
+                "number",
+                "null"
+            ]
+        },
+        "health_score": {
+            "description": "Weighted score computed from the live readings that were available",
+            "type": "number"
+        },
+        "memory_limit_mb": {
+            "type": [
+                "number",
+                "null"
+            ]
+        },
+        "memory_used_mb": {
+            "type": [
+                "number",
+                "null"
+            ]
+        },
+        "platform": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "read_at": {
+            "description": "When the device was measured (ISO timestamp)",
+            "type": "string"
+        },
+        "rtt_ms": {
+            "type": [
+                "number",
+                "null"
+            ]
+        },
+        "screen": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "storage_quota_mb": {
+            "type": "number"
+        },
+        "storage_used_mb": {
+            "type": "number"
+        },
+        "storage_used_pct": {
+            "description": "Percent of this site's storage allowance in use",
+            "type": "number"
+        }
+    },
+    "required": [
+        "read_at",
+        "health_score"
+    ],
+    "rls": {
+        "create": {
+            "created_by": "{{user.id}}"
+        },
+        "delete": {
+            "$or": [
+                {
+                    "created_by": "{{user.id}}"
+                },
+                {
+                    "user_condition": {
+                        "role": "admin"
+                    }
+                }
+            ]
+        },
+        "read": {
+            "$or": [
+                {
+                    "created_by": "{{user.id}}"
+                },
+                {
+                    "user_condition": {
+                        "role": "admin"
+                    }
+                }
+            ]
+        },
+        "update": {
+            "created_by": "{{user.id}}"
+        }
+    },
+    "type": "object"
+}

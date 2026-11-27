@@ -1,0 +1,9 @@
+{
+    "name": "base44-app",
+    "site": {
+        "buildCommand": "npm run build",
+        "installCommand": "npm install",
+        "outputDirectory": "./dist",
+        "serveCommand": "npm run dev"
+    }
+}
